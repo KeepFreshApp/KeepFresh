@@ -70,9 +70,15 @@ A tracker-inspired app that allows people to be updated of the expiration of the
 
 **Flow Navigation** (Screen to Screen)
 
+* Item Add Screen
+   * => Items List (after all item information has been entered)
 * Items List
    * => Item Add Page
    * => Settings screen
+* Favorited Items List
+   * => None 
+* Settings Menu
+   * => Items List (after user finishes editing settings) 
 
 ## Wireframes
 ![](https://i.imgur.com/FgcyC0u.png)
