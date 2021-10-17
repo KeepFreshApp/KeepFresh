@@ -15,15 +15,15 @@ A tracker-inspired app that allows people to be updated of the expiration of the
 - **Category:**
     - Health, Productivity
 - **Mobile:**
-    - We want our app to be easy to use and always accessible. A mobile app best fits our goals as our target user will probably have access to a phone when putting away their groceries.
+    - We want our app to be easy to use and always accessible. A mobile app best fits our goals as our target user will probably have access to a phone when putting away their groceries. In addition, opening an app takes less time than opening a web browser and then typing in an url.
 - **Story:**
     - The purpose of this app is to provide a framework of keeping track of all grocery items. Whether it be to remind users of grocery items they have forgotten about, allow users to optimize food usage before it spoils, or provide an accessible forum to meal planning, this app will be a versatile modem to do it all.
 - **Market:** 
     - Since everyone buys groceries, we expect that our app can potentially have a large userbase.
 - **Habit:**
-    -  This app is probably not habit-forming. We intend for the user to open this app every time they finish buying groceries, which could be on a weekly basis.
+    -  This app is probably not habit-forming. We intend for the user to open this app every time they finish buying groceries, which may vary based on the user.
 - **Scope:**
-    - People that have food in their house who want to keep better track of the expiry dates
+    - The scope for this app is pretty well formed, as we are targeting people that have food in their house who want to keep better track of the expiry dates. Based on our discussion our group is confident that we can effectively implement all our required user stories by the end of the course.
 
 ## Product Spec
 
