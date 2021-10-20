@@ -87,11 +87,101 @@ A tracker-inspired app that allows people to be updated of the expiration of the
 
 ### [BONUS] Interactive Prototype
 
-## Schema 
-[This section will be completed in Unit 9]
+## Schema
 ### Models
-[Add table of models]
+#### foodItem
+
+   | Property      | Type            | Description                  |
+   | ------------- | --------        | ------------                 |
+   | itemId        | String          | unique id for the item       |
+   | itemName      | String          | name of food item            |
+   | owner         | Pointer to User | unique id for user           |
+   | category      | String          | item category by user        |
+   | expiryDate    | DateTime        | date when item expires       |
+   | favorited     | Boolean         | item's favorited status      |
+   | purchaseDate  | DateTime        | date when item was purchased |
+   
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+- Item Add Screen
+    - (POST) Add an item and its designated information to the items list
+    ```swift
+    let item = PFObject(className: "Items")
+    item["itemId"] = itemId
+    item["itemName"] = itemName
+    item["owner"] = PFUser.current()!
+    item["category"] = category
+    item["expiryDate"] = expiryDate
+    item["favorited"] = false
+    item["purchaseDate"] = purchaseDate
+    
+    post.saveInBackground { (success, error) in
+        if success {
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            print("Error")
+        }
+    }
+    ```
+- Items List Screen 
+    - (GET) Retrieve list of items and their properties
+    ```swift
+    var posts = [PFObject]()
+    let query = PFQuery(className:"Items")
+    query.whereKey("owner", equalTo: PFUser.current())
+    query.findObjectsInBackground { (posts, error) in
+        if (posts != nil) {
+            self.posts = posts!
+            self.tableView.reloadData()
+        }
+    }
+    ```
+    - (POST/PUT) Update Favorited status of items
+    ```swift
+    var query = PFQuery(className:"Items")
+    query.getObjectInBackgroundWithId(itemId) { (item: PFObject?, error: NSError?) -> Void in
+        if error != nil {
+            print(error)
+        } else if let item = item {
+            item["favorited"] = !item["favorited"]
+            item.saveInBackground()
+        }
+    }
+    ```
+    - (DELETE) Remove item from the list
+    ```swift
+    let query = PFQuery(className: "Items")
+    query.whereKey("itemId", equalTo: itemId)
+    query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]?, error: NSError?) -> Void in
+        for item in items {
+            item.deleteEventually()
+        }
+    }
+    ```
+- Favorited Items List Screen
+    - (GET) Retrieve list of favorited items and their properties
+    ```swift
+    let query = PFQuery(className:"Items")
+    query.whereKey("owner", equalTo:PFUser.current()).whereKey("favorited", equalTo: True)
+    query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+    if error != nil {
+        print(error.localizedDescription)
+    } 
+    else{
+        // Do something with the found objects
+        for object in objects {
+            print(object.objectId as Any)
+        }
+    }
+    ```
+    - (POST/PUT) Update Favorited status of items
+    ```swift
+    var query = PFQuery(className:"Items")
+    query.getObjectInBackgroundWithId(itemId) { (item: PFObject?, error: NSError?) -> Void in
+        if error != nil {
+            print(error)
+        } else if let item = item {
+            item["favorited"] = !item["favorited"]
+            item.saveInBackground()
+        }
+    }
+    ```
