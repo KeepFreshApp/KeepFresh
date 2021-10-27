@@ -1,6 +1,5 @@
 # KeepFresh
 
-Matthew's File
 Albert Ai
 Aditi Gandhi
 Matthew Peng
