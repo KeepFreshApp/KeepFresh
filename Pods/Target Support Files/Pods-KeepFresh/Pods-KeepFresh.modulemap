@@ -1,0 +1,6 @@
+framework module Pods_KeepFresh {
+  umbrella header "Pods-KeepFresh-umbrella.h"
+
+  export *
+  module * { export * }
+}
