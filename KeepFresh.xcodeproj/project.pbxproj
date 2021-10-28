@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		1091E6642728F10E00D80EBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091E6632728F10E00D80EBA /* AppDelegate.swift */; };
 		1091E6662728F10E00D80EBA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091E6652728F10E00D80EBA /* SceneDelegate.swift */; };
-		1091E6682728F10E00D80EBA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091E6672728F10E00D80EBA /* ViewController.swift */; };
+		1091E6682728F10E00D80EBA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091E6672728F10E00D80EBA /* LoginViewController.swift */; };
 		1091E66B2728F10E00D80EBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1091E6692728F10E00D80EBA /* Main.storyboard */; };
 		1091E66D2728F11200D80EBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1091E66C2728F11200D80EBA /* Assets.xcassets */; };
 		1091E6702728F11200D80EBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1091E66E2728F11200D80EBA /* LaunchScreen.storyboard */; };
 		1091E67B2728F11200D80EBA /* KeepFreshTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091E67A2728F11200D80EBA /* KeepFreshTests.swift */; };
 		1091E6852728F11200D80EBA /* KeepFreshUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091E6842728F11200D80EBA /* KeepFreshUITests.swift */; };
 		1091E6872728F11200D80EBA /* KeepFreshUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091E6862728F11200D80EBA /* KeepFreshUITestsLaunchTests.swift */; };
+		1091E694272A35E800D80EBA /* GroceriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091E693272A35E800D80EBA /* GroceriesViewController.swift */; };
 		ACC8331C62E8DDE3D06F9C1B /* Pods_KeepFresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB41769A96566FB382033FDA /* Pods_KeepFresh.framework */; };
 		E1477D68EB1DC0F9DE2CFBC2 /* Pods_KeepFresh_KeepFreshUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3CDDA3EEF863C88B1FF506 /* Pods_KeepFresh_KeepFreshUITests.framework */; };
 		F05FAE48705D744E2BE6C236 /* Pods_KeepFreshTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 875ABBE1429E6E0401524A3F /* Pods_KeepFreshTests.framework */; };
@@ -44,7 +45,7 @@
 		1091E6602728F10E00D80EBA /* KeepFresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeepFresh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1091E6632728F10E00D80EBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1091E6652728F10E00D80EBA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1091E6672728F10E00D80EBA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1091E6672728F10E00D80EBA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1091E66A2728F10E00D80EBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1091E66C2728F11200D80EBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1091E66F2728F11200D80EBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,6 +55,7 @@
 		1091E6802728F11200D80EBA /* KeepFreshUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeepFreshUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1091E6842728F11200D80EBA /* KeepFreshUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepFreshUITests.swift; sourceTree = "<group>"; };
 		1091E6862728F11200D80EBA /* KeepFreshUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepFreshUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1091E693272A35E800D80EBA /* GroceriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceriesViewController.swift; sourceTree = "<group>"; };
 		13FF8E685E7C3FFAAC86E66F /* Pods-KeepFresh-KeepFreshUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeepFresh-KeepFreshUITests.release.xcconfig"; path = "Target Support Files/Pods-KeepFresh-KeepFreshUITests/Pods-KeepFresh-KeepFreshUITests.release.xcconfig"; sourceTree = "<group>"; };
 		607B67F8A099923E6380B1BD /* Pods-KeepFreshTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeepFreshTests.debug.xcconfig"; path = "Target Support Files/Pods-KeepFreshTests/Pods-KeepFreshTests.debug.xcconfig"; sourceTree = "<group>"; };
 		679F5747FCDBB181AF1DB4D6 /* Pods-KeepFresh-KeepFreshUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeepFresh-KeepFreshUITests.debug.xcconfig"; path = "Target Support Files/Pods-KeepFresh-KeepFreshUITests/Pods-KeepFresh-KeepFreshUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -118,11 +120,12 @@
 			children = (
 				1091E6632728F10E00D80EBA /* AppDelegate.swift */,
 				1091E6652728F10E00D80EBA /* SceneDelegate.swift */,
-				1091E6672728F10E00D80EBA /* ViewController.swift */,
+				1091E6672728F10E00D80EBA /* LoginViewController.swift */,
 				1091E6692728F10E00D80EBA /* Main.storyboard */,
 				1091E66C2728F11200D80EBA /* Assets.xcassets */,
 				1091E66E2728F11200D80EBA /* LaunchScreen.storyboard */,
 				1091E6712728F11200D80EBA /* Info.plist */,
+				1091E693272A35E800D80EBA /* GroceriesViewController.swift */,
 			);
 			path = KeepFresh;
 			sourceTree = "<group>";
@@ -164,7 +167,6 @@
 				607B67F8A099923E6380B1BD /* Pods-KeepFreshTests.debug.xcconfig */,
 				8E98CC86813E7DEE5546BD17 /* Pods-KeepFreshTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -179,6 +181,7 @@
 				1091E65C2728F10E00D80EBA /* Sources */,
 				1091E65D2728F10E00D80EBA /* Frameworks */,
 				1091E65E2728F10E00D80EBA /* Resources */,
+				686E308EB9689B16EAAA8B0C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -216,6 +219,7 @@
 				1091E67C2728F11200D80EBA /* Sources */,
 				1091E67D2728F11200D80EBA /* Frameworks */,
 				1091E67E2728F11200D80EBA /* Resources */,
+				F52436069DA3D2F9BBB8A7F7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -342,6 +346,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		686E308EB9689B16EAAA8B0C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KeepFresh/Pods-KeepFresh-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KeepFresh/Pods-KeepFresh-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KeepFresh/Pods-KeepFresh-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A4BF09173E570EA35A9940D5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -364,6 +385,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F52436069DA3D2F9BBB8A7F7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KeepFresh-KeepFreshUITests/Pods-KeepFresh-KeepFreshUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KeepFresh-KeepFreshUITests/Pods-KeepFresh-KeepFreshUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KeepFresh-KeepFreshUITests/Pods-KeepFresh-KeepFreshUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -371,8 +409,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1091E6682728F10E00D80EBA /* ViewController.swift in Sources */,
+				1091E6682728F10E00D80EBA /* LoginViewController.swift in Sources */,
 				1091E6642728F10E00D80EBA /* AppDelegate.swift in Sources */,
+				1091E694272A35E800D80EBA /* GroceriesViewController.swift in Sources */,
 				1091E6662728F10E00D80EBA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

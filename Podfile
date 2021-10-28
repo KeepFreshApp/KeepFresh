@@ -6,6 +6,7 @@ target 'KeepFresh' do
   use_frameworks!
 
   # Pods for KeepFresh
+  pod 'Parse'
 
   target 'KeepFreshTests' do
     inherit! :search_paths
