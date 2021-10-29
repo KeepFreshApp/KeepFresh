@@ -1,0 +1,105 @@
+//
+//  AddItemViewController.swift
+//  KeepFresh
+//
+//  Created by Aditi Gandhi on 10/27/21.
+//
+
+import UIKit
+import Parse
+
+class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+
+    @IBOutlet weak var itemNameField: UITextField!
+    @IBOutlet weak var categoryPicker: UIPickerView!
+    @IBOutlet weak var categoryField: UITextField!
+    
+    @IBOutlet weak var expirationDateField: UITextField!
+    
+    var categories = ["Dairy", "Vegetables", "Condiment", "Bakery", "Snacks", "Fruit", "Protein", "Pantry", "Frozen", "Drink" ]
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        createDatePickerView()
+        
+        
+        // Do any additional setup after loading the view.
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return categories.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return categories[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.categoryField.text = self.categories[row]
+        self.categoryPicker.isHidden = true
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.categoryPicker.isHidden = false
+    }
+
+    
+    let datePicker = UIDatePicker()
+    
+    func createDatePickerView(){
+        datePicker.preferredDatePickerStyle = .wheels
+
+        
+        expirationDateField.textAlignment = .center
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
+        toolbar.setItems([doneButton], animated: true)
+        expirationDateField.inputAccessoryView = toolbar
+        
+        expirationDateField.inputView = datePicker
+        
+        datePicker.datePickerMode = .date
+    }
+    
+    @objc func donePressed(){
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        
+        expirationDateField.text = formatter.string(from: datePicker.date)
+        self.view.endEditing(true)
+    }
+    
+    
+    @IBAction func onAddItem(_ sender: Any) {
+        let item = PFObject(className: "Grocery_Item")
+        item["owner"] = PFUser.current()!.username
+        item["expiryDate"] = expirationDateField.text
+        item["favorited"] = false
+        item["category"] = categoryField.text
+        item["itemName"] = itemNameField.text
+        
+        item.saveInBackground{(success, error) in
+            if success{
+                self.dismiss(animated: true, completion: nil)
+                print("Saved")
+            }else{
+                print("error")
+                print(error)
+            }
+        }
+    }
+    /*
+     
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}

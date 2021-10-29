@@ -8,7 +8,58 @@
 import UIKit
 import Parse
 
-class GroceriesViewController: UIViewController {
+class GroceriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    var groceries = [PFObject]()
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return groceries.count
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let query = PFQuery(className: "Grocery_Item")
+        query.whereKey("owner", equalTo: PFUser.current()!.username)
+        query.limit = 20
+        
+        query.findObjectsInBackground{ (groceries, error) in
+            if groceries != nil{
+                self.groceries = groceries!
+                self.tableView.reloadData()
+            }
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+      }
+    
+    @IBAction func onDeleteItem(_ sender: Any) {
+        let point = (sender as AnyObject).convert(CGPoint.zero, to: tableView)
+        guard let indexpath = tableView.indexPathForRow(at: point) else {return}
+        groceries.remove(at: indexpath.row)
+        tableView.beginUpdates()
+        tableView.deleteRows(at: [IndexPath(row: indexpath.row, section:0)], with: .left)
+        tableView.endUpdates()
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemsTableViewCell") as! ItemsTableViewCell
+        let grocery = groceries[indexPath.row]
+        
+        let user = grocery["owner"] as! String
+        print(user)
+        cell.itemNameLabel.text = grocery["itemName"] as! String
+        print(grocery)
+        cell.categoryLabel.text = grocery["category"] as! String
+        cell.expirationLabel.text = grocery["expiryDate"] as! String
+        
+        return cell
+    }
+    @IBOutlet weak var tableView: UITableView!
+    
     @IBAction func onLogoutButton(_ sender: Any) {
         PFUser.logOut()
         
@@ -21,8 +72,11 @@ class GroceriesViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.delegate = self
+        tableView.dataSource = self
         // Do any additional setup after loading the view.
+        self.tableView.reloadData()
+
     }
     
 
