@@ -7,6 +7,7 @@
 
 import UIKit
 import Parse
+import Foundation
 
 class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
@@ -16,7 +17,7 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     @IBOutlet weak var expirationDateField: UITextField!
     
-    var categories = ["Dairy", "Vegetables", "Condiment", "Bakery", "Snacks", "Fruit", "Protein", "Pantry", "Frozen", "Drink" ]
+    var categories = ["Dairy", "Vegetable", "Condiment", "Bakery", "Snack", "Fruit", "Protein", "Pantry", "Frozen", "Drink" ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +77,10 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     @IBAction func onAddItem(_ sender: Any) {
         let item = PFObject(className: "Grocery_Item")
         item["owner"] = PFUser.current()!.username
-        item["expiryDate"] = expirationDateField.text
+        
+        //get Date as Date type
+        item["expiryDate"] = datePicker.date
+        //item["expiryDate"] = expirationDateField.text
         item["favorited"] = false
         item["category"] = categoryField.text
         item["itemName"] = itemNameField.text
