@@ -54,7 +54,12 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.itemNameLabel.text = grocery["itemName"] as! String
         print(grocery)
         cell.categoryLabel.text = grocery["category"] as! String
-        cell.expirationLabel.text = grocery["expiryDate"] as! String
+       
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        
+        cell.expirationLabel.text = formatter.string(from: grocery["expiryDate"] as! Date)
         
         return cell
     }
