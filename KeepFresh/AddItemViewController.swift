@@ -41,7 +41,12 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         self.categoryPicker.isHidden = true
     }
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.categoryPicker.isHidden = false
+        if textField == self.categoryField {
+            self.categoryPicker.isHidden = false
+        }
+        else{
+            self.categoryPicker.isHidden = true
+        }
     }
 
     
