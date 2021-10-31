@@ -27,6 +27,7 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
                 self.groceries = groceries!
                 self.tableView.reloadData()
             }
+            
         }
         
     }

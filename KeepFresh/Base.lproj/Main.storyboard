@@ -114,7 +114,7 @@
         <!--Groceries-->
         <scene sceneID="yXH-7v-rVQ">
             <objects>
-                <viewController storyboardIdentifier="GroceriesViewController" id="SC0-ch-Fha" customClass="GroceriesViewController" customModule="KeepFresh" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GroceriesViewController" modalPresentationStyle="fullScreen" id="SC0-ch-Fha" customClass="GroceriesViewController" customModule="KeepFresh" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wrd-em-l2d">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -224,9 +224,9 @@
         <!--Add Item View Controller-->
         <scene sceneID="XtJ-DD-ICa">
             <objects>
-                <viewController id="EmX-jT-tKc" customClass="AddItemViewController" customModule="KeepFresh" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="EmX-jT-tKc" customClass="AddItemViewController" customModule="KeepFresh" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kc2-tU-GW7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Grocery Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hu5-iW-sKW">
