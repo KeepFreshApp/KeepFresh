@@ -32,6 +32,18 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let defaults = UserDefaults.standard
+        if defaults.bool(forKey: "darkModeState") == true {
+            overrideUserInterfaceStyle = .dark
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        } else {
+            overrideUserInterfaceStyle = .light
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        }
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
       }

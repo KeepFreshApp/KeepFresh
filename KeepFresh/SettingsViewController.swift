@@ -9,21 +9,51 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
+    @IBOutlet weak var notificationPeriodField: UITextField!
+    @IBOutlet weak var sortByControl: UISegmentedControl!
+    @IBOutlet weak var darkModeSwitch: UISwitch!
+    
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+        if defaults.bool(forKey: "darkModeState") == true {
+            overrideUserInterfaceStyle = .dark
+            darkModeSwitch.isOn = true
+            notificationPeriodField.backgroundColor = UIColor.darkGray
+        } else {
+            overrideUserInterfaceStyle = .light
+            notificationPeriodField.backgroundColor = UIColor.white
+        }
+        notificationPeriodField.text = String(defaults.integer(forKey: "NotifyDays"))
+        sortByControl.selectedSegmentIndex = defaults.integer(forKey: "Sortby")
     }
-    */
 
+    override func viewWillDisappear(_ animated: Bool) {
+        defaults.set(sortByControl.selectedSegmentIndex, forKey: "Sortby")
+        defaults.set(Int(notificationPeriodField.text!), forKey: "NotifyDays")
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    @IBAction func onDarkModeSwitch(_ sender: UISwitch) {
+        if sender.isOn {
+            defaults.set(true, forKey: "darkModeState")
+            overrideUserInterfaceStyle = .dark
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            notificationPeriodField.backgroundColor = UIColor.darkGray
+        } else {
+            defaults.set(false, forKey: "darkModeState")
+            overrideUserInterfaceStyle = .light
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+            notificationPeriodField.backgroundColor = UIColor.white
+        }
+        defaults.synchronize()
+    }
 }

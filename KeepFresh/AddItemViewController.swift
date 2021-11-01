@@ -27,6 +27,24 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let defaults = UserDefaults.standard
+        if defaults.bool(forKey: "darkModeState") == true {
+            overrideUserInterfaceStyle = .dark
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            itemNameField.backgroundColor = UIColor.darkGray
+            categoryField.backgroundColor = UIColor.darkGray
+            expirationDateField.backgroundColor = UIColor.darkGray
+        } else {
+            overrideUserInterfaceStyle = .light
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+            itemNameField.backgroundColor = UIColor.white
+            categoryField.backgroundColor = UIColor.white
+            expirationDateField.backgroundColor = UIColor.white
+        }
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
