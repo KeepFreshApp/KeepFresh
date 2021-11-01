@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Parse
+import CryptoKit
 
 class GroceryItemCell: UITableViewCell {
 
@@ -15,6 +17,7 @@ class GroceryItemCell: UITableViewCell {
     @IBOutlet weak var favButton: UIButton!
     
     var favorited: Bool = false
+    var itemId: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,16 +29,32 @@ class GroceryItemCell: UITableViewCell {
     
     @IBAction func favoriteItem(_ sender: Any) {
         if (!favorited) {
-//            TwitterAPICaller.client?.favoriteTweet(tweetId: tweetId, success: { self.setFavorite(true) }, failure: {(error) in
-//                print("Favorite did not succeed: \(error)")
-//            })
+//            var query = PFQuery(className:"Grocery_Item")
+//
+//            query.getObjectInBackgroundWithId(itemId!) { (parseObject: PFObject?, error: NSError?) -> Void in
+//                if error != nil {
+//                    print(error)
+//                } else if parseObject != nil {
+//                    parseObject["favorited"] = true
+//                    parseObject.saveInBackground()
+//                }
+//            }
+
             favorited = true
             setFavorite(favorited)
         }
         else {
-//            TwitterAPICaller.client?.unfavoriteTweet(tweetId: tweetId, success: { self.setFavorite(false) }, failure: {(error) in
-//                print("Unfavorite did not succeed: \(error)")
-//            })
+//            var query = PFQuery(className:"Grocery_Item")
+//
+//            query.getObjectInBackgroundWithId(itemId!) { (parseObject: PFObject?, error: NSError?) -> Void in
+//                if error != nil {
+//                    print(error)
+//                } else if parseObject != nil {
+//                    parseObject["favorited"] = false
+//                    parseObject.saveInBackground()
+//                }
+//            }
+
             favorited = false
             setFavorite(favorited)
         }
@@ -49,5 +68,9 @@ class GroceryItemCell: UITableViewCell {
         else {
             favButton.setImage(UIImage(systemName: "heart"), for: .normal)
         }
+    }
+    
+    func setRed() {
+        backgroundColor = UIColor.red
     }
 }

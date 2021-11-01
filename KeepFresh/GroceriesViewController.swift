@@ -13,20 +13,16 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var groceriesTableView: UITableView!
     
     var items = [PFObject]()
-    var numberOfItems = 20
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         groceriesTableView.delegate = self
         groceriesTableView.dataSource = self
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+        
         let query = PFQuery(className: "Grocery_Item")
-        query.includeKeys(["owner"])
-        query.limit = numberOfItems
+        query.includeKeys(["owner", "objectId"])
+        query.order(byAscending: "expiryDate")
         query.findObjectsInBackground { (items, error) in
             if (items != nil) {
                 self.items = items!
@@ -35,8 +31,9 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    // Item loading stuff
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+    }
     
     // TableView stuff
     
@@ -50,18 +47,23 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = groceriesTableView.dequeueReusableCell(withIdentifier: "GroceryItemCell", for: indexPath) as! GroceryItemCell
+        let item = items[indexPath.row]
         
-        cell.itemNameLabel.text = items[indexPath.row]["itemName"] as? String
-        cell.categoryLabel.text = items[indexPath.row]["category"] as? String
+        cell.itemNameLabel.text = item["itemName"] as? String
+        cell.categoryLabel.text = item["category"] as? String
         
         let expirationDate = items[indexPath.row]["expiryDate"] as! Date
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "M/d/yyyy, h:mm a"
         let dateFormatterOut = DateFormatter()
         dateFormatterOut.dateFormat = "MMM d, yyyy"
-
         let date: Date? = dateFormatterGet.date(from: expirationDate.formatted())
         cell.expirationDateLabel.text = dateFormatterOut.string(from: date!)
+
+        let currDate = Date()
+        if (expirationDate < currDate) {
+            cell.setRed()
+        }
         
         cell.setFavorite(items[indexPath.row]["favorited"] as! Bool)
         
