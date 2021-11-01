@@ -9,27 +9,27 @@ import UIKit
 import Parse
 
 class GroceriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var groceries = [PFObject]()
+  
+    @IBOutlet weak var groceriesTableView: UITableView!
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groceries.count
-    }
+    var items = [PFObject]()
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        groceriesTableView.delegate = self
+        groceriesTableView.dataSource = self
         
         let query = PFQuery(className: "Grocery_Item")
+        // query.includeKeys(["owner", "objectId"])
         query.whereKey("owner", equalTo: PFUser.current()!.username)
-        query.limit = 20
-        
-        query.findObjectsInBackground{ (groceries, error) in
-            if groceries != nil{
-                self.groceries = groceries!
-                self.tableView.reloadData()
+        query.order(byAscending: "expiryDate")
+        query.findObjectsInBackground { (items, error) in
+            if (items != nil) {
+                self.items = items!
+                self.groceriesTableView.reloadData()
             }
-            
         }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,7 +47,17 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
       }
+  
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+    }
     
+    // TableView stuff
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1;
+    }
+  
     @IBAction func onDeleteItem(_ sender: Any) {
         let point = (sender as AnyObject).convert(CGPoint.zero, to: tableView)
         guard let indexpath = tableView.indexPathForRow(at: point) else {return}
@@ -55,28 +65,7 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.beginUpdates()
         tableView.deleteRows(at: [IndexPath(row: indexpath.row, section:0)], with: .left)
         tableView.endUpdates()
-        
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemsTableViewCell") as! ItemsTableViewCell
-        let grocery = groceries[indexPath.row]
-        
-        let user = grocery["owner"] as! String
-        print(user)
-        cell.itemNameLabel.text = grocery["itemName"] as! String
-        print(grocery)
-        cell.categoryLabel.text = grocery["category"] as! String
-       
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        
-        cell.expirationLabel.text = formatter.string(from: grocery["expiryDate"] as! Date)
-        
-        return cell
-    }
-    @IBOutlet weak var tableView: UITableView!
     
     @IBAction func onLogoutButton(_ sender: Any) {
         PFUser.logOut()
@@ -88,15 +77,39 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         delegate.window?.rootViewController = loginViewController
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
-        // Do any additional setup after loading the view.
-        self.tableView.reloadData()
-
+  
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
     }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = groceriesTableView.dequeueReusableCell(withIdentifier: "GroceryItemCell", for: indexPath) as! GroceryItemCell
+        let item = items[indexPath.row]
+        
+        cell.itemNameLabel.text = item["itemName"] as? String
+        cell.categoryLabel.text = item["category"] as? String
+        
+        let expirationDate = items[indexPath.row]["expiryDate"] as! Date
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "M/d/yyyy, h:mm a"
+        let dateFormatterOut = DateFormatter()
+        dateFormatterOut.dateFormat = "MMM d, yyyy"
+        let date: Date? = dateFormatterGet.date(from: expirationDate.formatted())
+        cell.expirationDateLabel.text = dateFormatterOut.string(from: date!)
+
+        let currDate = Date()
+        if (expirationDate < currDate) {
+            cell.setRed()
+        }
+        
+        cell.setFavorite(items[indexPath.row]["favorited"] as! Bool)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        groceriesTableView.deselectRow(at: indexPath, animated: true)
+    }
 
     /*
     // MARK: - Navigation
