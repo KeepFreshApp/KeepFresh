@@ -36,26 +36,26 @@ A tracker-inspired app that allows people to be updated of the expiration of the
 
 **Required Must-have Stories**
 
-* User can create an account, sign up and login
-* User remains logged in unless they log out
-* User can log out
+[X] User can create an account, sign up and login
+[X] User remains logged in unless they log out
+[X] User can log out
 
 
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/45218230/139597296-dcb968a2-16eb-468f-8da7-110bd31ac49c.gif)
 
 
 
-* User can add food item entries
+[X] User can add food item entries
 
 ![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/45218230/139597891-2fc8188e-89f2-4734-ac99-fac75548fed0.gif)
 
 
 
-* Foods expiring within a few days are colored in red
-* User can favorite items 
-* Favorited items can be visible in a separate list
-* Sort items by expiration date
-* Implement a settings menu
+[] Foods expiring within a few days are colored in red
+[] User can favorite items 
+[] Favorited items can be visible in a separate list
+[] Sort items by expiration date
+[X] Implement a settings menu
 
 **Optional Nice-to-have Stories**
 
