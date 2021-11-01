@@ -20,6 +20,8 @@
 		1091E696272A920D00D80EBA /* GroceryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091E695272A920D00D80EBA /* GroceryItemCell.swift */; };
 		ACC8331C62E8DDE3D06F9C1B /* Pods_KeepFresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB41769A96566FB382033FDA /* Pods_KeepFresh.framework */; };
 		E1477D68EB1DC0F9DE2CFBC2 /* Pods_KeepFresh_KeepFreshUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3CDDA3EEF863C88B1FF506 /* Pods_KeepFresh_KeepFreshUITests.framework */; };
+		EE4C7D01272A5801009BA1B0 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4C7D00272A5801009BA1B0 /* AddItemViewController.swift */; };
+		EE7B2F95272BC08D006DE32C /* ItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7B2F94272BC08D006DE32C /* ItemsTableViewCell.swift */; };
 		F05FAE48705D744E2BE6C236 /* Pods_KeepFreshTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 875ABBE1429E6E0401524A3F /* Pods_KeepFreshTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +67,8 @@
 		8E98CC86813E7DEE5546BD17 /* Pods-KeepFreshTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeepFreshTests.release.xcconfig"; path = "Target Support Files/Pods-KeepFreshTests/Pods-KeepFreshTests.release.xcconfig"; sourceTree = "<group>"; };
 		CB41769A96566FB382033FDA /* Pods_KeepFresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeepFresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D405CF91D1C0979E06742BE1 /* Pods-KeepFresh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeepFresh.release.xcconfig"; path = "Target Support Files/Pods-KeepFresh/Pods-KeepFresh.release.xcconfig"; sourceTree = "<group>"; };
+		EE4C7D00272A5801009BA1B0 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		EE7B2F94272BC08D006DE32C /* ItemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +133,7 @@
 				1091E6712728F11200D80EBA /* Info.plist */,
 				1091E693272A35E800D80EBA /* GroceriesViewController.swift */,
 				1091E695272A920D00D80EBA /* GroceryItemCell.swift */,
+				EE4C7D00272A5801009BA1B0 /* AddItemViewController.swift */,
 			);
 			path = KeepFresh;
 			sourceTree = "<group>";
@@ -412,7 +417,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE4C7D01272A5801009BA1B0 /* AddItemViewController.swift in Sources */,
 				1091E6682728F10E00D80EBA /* LoginViewController.swift in Sources */,
+				EE7B2F95272BC08D006DE32C /* ItemsTableViewCell.swift in Sources */,
 				1091E6642728F10E00D80EBA /* AppDelegate.swift in Sources */,
 				1091E694272A35E800D80EBA /* GroceriesViewController.swift in Sources */,
 				1091E6662728F10E00D80EBA /* SceneDelegate.swift in Sources */,

@@ -9,7 +9,7 @@ import UIKit
 import Parse
 
 class GroceriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+  
     @IBOutlet weak var groceriesTableView: UITableView!
     
     var items = [PFObject]()
@@ -21,7 +21,8 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
         groceriesTableView.dataSource = self
         
         let query = PFQuery(className: "Grocery_Item")
-        query.includeKeys(["owner", "objectId"])
+        // query.includeKeys(["owner", "objectId"])
+        query.whereKey("owner", equalTo: PFUser.current()!.username)
         query.order(byAscending: "expiryDate")
         query.findObjectsInBackground { (items, error) in
             if (items != nil) {
@@ -40,7 +41,27 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
     }
+  
+    @IBAction func onDeleteItem(_ sender: Any) {
+        let point = (sender as AnyObject).convert(CGPoint.zero, to: tableView)
+        guard let indexpath = tableView.indexPathForRow(at: point) else {return}
+        groceries.remove(at: indexpath.row)
+        tableView.beginUpdates()
+        tableView.deleteRows(at: [IndexPath(row: indexpath.row, section:0)], with: .left)
+        tableView.endUpdates()
+    }
     
+    @IBAction func onLogoutButton(_ sender: Any) {
+        PFUser.logOut()
+        
+        let main = UIStoryboard(name: "Main", bundle: nil)
+        let loginViewController = main.instantiateViewController(withIdentifier: "LoginViewController")
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let delegate = windowScene.delegate as? SceneDelegate else {return}
+        
+        delegate.window?.rootViewController = loginViewController
+    }
+  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
