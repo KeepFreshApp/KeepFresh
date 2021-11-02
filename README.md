@@ -36,13 +36,26 @@ A tracker-inspired app that allows people to be updated of the expiration of the
 
 **Required Must-have Stories**
 
-* User can add food item entries
-- [X] Foods expiring within a few days are colored in red
-- [X] User can favorite items 
-- [X] Favorited items can be visible in a separate list
-- [X] Sort items by expiration date
+* [X] User can create an account, sign up and login
+* [X] User remains logged in unless they log out
+* [X] User can log out
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/45218230/139597296-dcb968a2-16eb-468f-8da7-110bd31ac49c.gif)
+
+* [X] User can add food item entries
+
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/45218230/139597891-2fc8188e-89f2-4734-ac99-fac75548fed0.gif)
+
+* [X] Foods expiring within a few days are colored in red
+* [X] User can favorite items 
+* [X] Favorited items can be visible in a separate list
+* [X] Sort items by expiration date
+
 ![](https://i.imgur.com/aoOVZiC.gif)
-* Implement a settings menu
+
+* [X] Implement a settings menu
+
+![Video Walkthrough](https://github.com/KeepFreshApp/KeepFreshGifs/blob/3bc4914913ed8118a94974e05fc249a8cc25a939/Settings.gif)
 
 **Optional Nice-to-have Stories**
 
