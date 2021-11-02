@@ -17,8 +17,12 @@
 		1091E6852728F11200D80EBA /* KeepFreshUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091E6842728F11200D80EBA /* KeepFreshUITests.swift */; };
 		1091E6872728F11200D80EBA /* KeepFreshUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091E6862728F11200D80EBA /* KeepFreshUITestsLaunchTests.swift */; };
 		1091E694272A35E800D80EBA /* GroceriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091E693272A35E800D80EBA /* GroceriesViewController.swift */; };
+		1091E696272A920D00D80EBA /* GroceryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091E695272A920D00D80EBA /* GroceryItemCell.swift */; };
+		1091E699273101EC00D80EBA /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091E698273101EC00D80EBA /* FavoritesViewController.swift */; };
 		ACC8331C62E8DDE3D06F9C1B /* Pods_KeepFresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB41769A96566FB382033FDA /* Pods_KeepFresh.framework */; };
 		E1477D68EB1DC0F9DE2CFBC2 /* Pods_KeepFresh_KeepFreshUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3CDDA3EEF863C88B1FF506 /* Pods_KeepFresh_KeepFreshUITests.framework */; };
+		ED05F4172730729B00A418C4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED05F4162730729B00A418C4 /* SettingsViewController.swift */; };
+		EE4C7D01272A5801009BA1B0 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4C7D00272A5801009BA1B0 /* AddItemViewController.swift */; };
 		F05FAE48705D744E2BE6C236 /* Pods_KeepFreshTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 875ABBE1429E6E0401524A3F /* Pods_KeepFreshTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +60,8 @@
 		1091E6842728F11200D80EBA /* KeepFreshUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepFreshUITests.swift; sourceTree = "<group>"; };
 		1091E6862728F11200D80EBA /* KeepFreshUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepFreshUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1091E693272A35E800D80EBA /* GroceriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceriesViewController.swift; sourceTree = "<group>"; };
+		1091E695272A920D00D80EBA /* GroceryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItemCell.swift; sourceTree = "<group>"; };
+		1091E698273101EC00D80EBA /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		13FF8E685E7C3FFAAC86E66F /* Pods-KeepFresh-KeepFreshUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeepFresh-KeepFreshUITests.release.xcconfig"; path = "Target Support Files/Pods-KeepFresh-KeepFreshUITests/Pods-KeepFresh-KeepFreshUITests.release.xcconfig"; sourceTree = "<group>"; };
 		607B67F8A099923E6380B1BD /* Pods-KeepFreshTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeepFreshTests.debug.xcconfig"; path = "Target Support Files/Pods-KeepFreshTests/Pods-KeepFreshTests.debug.xcconfig"; sourceTree = "<group>"; };
 		679F5747FCDBB181AF1DB4D6 /* Pods-KeepFresh-KeepFreshUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeepFresh-KeepFreshUITests.debug.xcconfig"; path = "Target Support Files/Pods-KeepFresh-KeepFreshUITests/Pods-KeepFresh-KeepFreshUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -63,6 +69,8 @@
 		8E98CC86813E7DEE5546BD17 /* Pods-KeepFreshTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeepFreshTests.release.xcconfig"; path = "Target Support Files/Pods-KeepFreshTests/Pods-KeepFreshTests.release.xcconfig"; sourceTree = "<group>"; };
 		CB41769A96566FB382033FDA /* Pods_KeepFresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeepFresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D405CF91D1C0979E06742BE1 /* Pods-KeepFresh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeepFresh.release.xcconfig"; path = "Target Support Files/Pods-KeepFresh/Pods-KeepFresh.release.xcconfig"; sourceTree = "<group>"; };
+		ED05F4162730729B00A418C4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		EE4C7D00272A5801009BA1B0 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +110,7 @@
 				1091E6612728F10E00D80EBA /* Products */,
 				C625F91E1B6C876AA705D7F1 /* Pods */,
 				56E7ED93302365E143FC36CD /* Frameworks */,
+				1091E69727309A3600D80EBA /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,6 +127,7 @@
 		1091E6622728F10E00D80EBA /* KeepFresh */ = {
 			isa = PBXGroup;
 			children = (
+				ED05F4162730729B00A418C4 /* SettingsViewController.swift */,
 				1091E6632728F10E00D80EBA /* AppDelegate.swift */,
 				1091E6652728F10E00D80EBA /* SceneDelegate.swift */,
 				1091E6672728F10E00D80EBA /* LoginViewController.swift */,
@@ -126,6 +136,9 @@
 				1091E66E2728F11200D80EBA /* LaunchScreen.storyboard */,
 				1091E6712728F11200D80EBA /* Info.plist */,
 				1091E693272A35E800D80EBA /* GroceriesViewController.swift */,
+				1091E695272A920D00D80EBA /* GroceryItemCell.swift */,
+				EE4C7D00272A5801009BA1B0 /* AddItemViewController.swift */,
+				1091E698273101EC00D80EBA /* FavoritesViewController.swift */,
 			);
 			path = KeepFresh;
 			sourceTree = "<group>";
@@ -145,6 +158,13 @@
 				1091E6862728F11200D80EBA /* KeepFreshUITestsLaunchTests.swift */,
 			);
 			path = KeepFreshUITests;
+			sourceTree = "<group>";
+		};
+		1091E69727309A3600D80EBA /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		56E7ED93302365E143FC36CD /* Frameworks */ = {
@@ -409,10 +429,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE4C7D01272A5801009BA1B0 /* AddItemViewController.swift in Sources */,
 				1091E6682728F10E00D80EBA /* LoginViewController.swift in Sources */,
+				1091E699273101EC00D80EBA /* FavoritesViewController.swift in Sources */,
+				ED05F4172730729B00A418C4 /* SettingsViewController.swift in Sources */,
 				1091E6642728F10E00D80EBA /* AppDelegate.swift in Sources */,
 				1091E694272A35E800D80EBA /* GroceriesViewController.swift in Sources */,
 				1091E6662728F10E00D80EBA /* SceneDelegate.swift in Sources */,
+				1091E696272A920D00D80EBA /* GroceryItemCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,6 +616,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VLZVDHGRUR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KeepFresh/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -620,6 +645,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VLZVDHGRUR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KeepFresh/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -648,6 +674,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VLZVDHGRUR;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -673,6 +700,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VLZVDHGRUR;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -697,6 +725,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VLZVDHGRUR;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -720,6 +749,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VLZVDHGRUR;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
