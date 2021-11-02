@@ -57,6 +57,8 @@ A tracker-inspired app that allows people to be updated of the expiration of the
 * [] Sort items by expiration date
 * [X] Implement a settings menu
 
+![Video Walkthrough](https://github.com/KeepFreshApp/KeepFreshGifs/blob/3bc4914913ed8118a94974e05fc249a8cc25a939/Settings.gif)
+
 **Optional Nice-to-have Stories**
 
 * Sort items by purchase date
