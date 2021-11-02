@@ -22,6 +22,8 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+      
         let query = PFQuery(className: "Grocery_Item")
         // query.includeKeys(["owner", "objectId"])
         query.whereKey("owner", equalTo: PFUser.current()!.username!)
@@ -32,8 +34,17 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
                 self.groceriesTableView.reloadData()
             }
         }
+      
+        let defaults = UserDefaults.standard
+        if defaults.bool(forKey: "darkModeState") == true {
+            overrideUserInterfaceStyle = .dark
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        } else {
+            overrideUserInterfaceStyle = .light
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        }
     }
-    
+  
     @IBAction func onLogoutButton(_ sender: Any) {
         PFUser.logOut()
         
