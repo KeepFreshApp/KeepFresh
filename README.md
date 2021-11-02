@@ -37,10 +37,11 @@ A tracker-inspired app that allows people to be updated of the expiration of the
 **Required Must-have Stories**
 
 * User can add food item entries
-* Foods expiring within a few days are colored in red
-* User can favorite items 
-* Favorited items can be visible in a separate list
-* Sort items by expiration date
+- [X] Foods expiring within a few days are colored in red
+- [X] User can favorite items 
+- [X] Favorited items can be visible in a separate list
+- [X] Sort items by expiration date
+![](https://i.imgur.com/aoOVZiC.gif)
 * Implement a settings menu
 
 **Optional Nice-to-have Stories**

@@ -19,6 +19,10 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
 
         groceriesTableView.delegate = self
         groceriesTableView.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         let query = PFQuery(className: "Grocery_Item")
         query.whereKey("owner", equalTo: PFUser.current()!.username!)
@@ -29,10 +33,6 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
                 self.groceriesTableView.reloadData()
             }
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
       
         let defaults = UserDefaults.standard
         if defaults.bool(forKey: "darkModeState") == true {

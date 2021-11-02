@@ -19,6 +19,10 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         favoritesTableView.delegate = self
         favoritesTableView.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         let query = PFQuery(className: "Grocery_Item")
         query.whereKey("owner", equalTo: PFUser.current()!.username!)
@@ -30,10 +34,6 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
                 self.favoritesTableView.reloadData()
             }
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
         let defaults = UserDefaults.standard
         if defaults.bool(forKey: "darkModeState") == true {
