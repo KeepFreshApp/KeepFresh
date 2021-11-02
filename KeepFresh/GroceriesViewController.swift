@@ -19,10 +19,14 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
 
         groceriesTableView.delegate = self
         groceriesTableView.dataSource = self
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+      
         let query = PFQuery(className: "Grocery_Item")
         // query.includeKeys(["owner", "objectId"])
-        query.whereKey("owner", equalTo: PFUser.current()!.username)
+        query.whereKey("owner", equalTo: PFUser.current()!.username!)
         query.order(byAscending: "expiryDate")
         query.findObjectsInBackground { (items, error) in
             if (items != nil) {
@@ -30,10 +34,7 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
                 self.groceriesTableView.reloadData()
             }
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+      
         let defaults = UserDefaults.standard
         if defaults.bool(forKey: "darkModeState") == true {
             overrideUserInterfaceStyle = .dark
@@ -43,30 +44,7 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         }
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
-      }
   
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-    }
-    
-    // TableView stuff
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1;
-    }
-  
-    @IBAction func onDeleteItem(_ sender: Any) {
-        let point = (sender as AnyObject).convert(CGPoint.zero, to: tableView)
-        guard let indexpath = tableView.indexPathForRow(at: point) else {return}
-        groceries.remove(at: indexpath.row)
-        tableView.beginUpdates()
-        tableView.deleteRows(at: [IndexPath(row: indexpath.row, section:0)], with: .left)
-        tableView.endUpdates()
-    }
-    
     @IBAction func onLogoutButton(_ sender: Any) {
         PFUser.logOut()
         
@@ -76,6 +54,10 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
               let delegate = windowScene.delegate as? SceneDelegate else {return}
         
         delegate.window?.rootViewController = loginViewController
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1;
     }
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -105,6 +87,13 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.setFavorite(items[indexPath.row]["favorited"] as! Bool)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            items.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
