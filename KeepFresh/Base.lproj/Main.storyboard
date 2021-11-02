@@ -256,7 +256,7 @@
                         <rightBarButtonItems>
                             <barButtonItem title="Add" image="plus" catalog="system" id="qWn-ev-lSe">
                                 <connections>
-                                    <segue destination="EmX-jT-tKc" kind="presentation" modalPresentationStyle="fullScreen" id="ed7-x2-tEg"/>
+                                    <segue destination="EmX-jT-tKc" kind="show" id="ed7-x2-tEg"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Logout" image="xmark" catalog="system" id="yje-zM-VtF">
@@ -342,15 +342,6 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Add"/>
                                 <connections>
                                     <action selector="onAddItem:" destination="EmX-jT-tKc" eventType="touchUpInside" id="1nE-W8-npI"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BwJ-fq-fgK">
-                                <rect key="frame" x="172" y="535" width="70" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Back"/>
-                                <connections>
-                                    <action selector="backPressed:" destination="EmX-jT-tKc" eventType="touchUpInside" id="lkT-zS-SzL"/>
                                 </connections>
                             </button>
                         </subviews>

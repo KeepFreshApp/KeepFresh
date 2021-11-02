@@ -14,6 +14,22 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     var items = [PFObject]()
     
+    /*
+     TRY THIS QUERY BELOW
+     
+     let query = PFQuery(className: "Grocery_Item")
+     query.whereKey("owner", equalTo: PFUser.current()!.username!)
+     query.whereKey("favorited", equalTo: true)
+     query.order(byAscending: "expiryDate")
+     query.findObjectsInBackground { (items, error) in
+         if (items != nil) {
+             self.items = items!
+             self.groceriesTableView.reloadData()
+         }
+     }
+     
+     */
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,7 +41,6 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewWillAppear(animated)
       
         let query = PFQuery(className: "Grocery_Item")
-        // query.includeKeys(["owner", "objectId"])
         query.whereKey("owner", equalTo: PFUser.current()!.username!)
         query.order(byAscending: "expiryDate")
         query.findObjectsInBackground { (items, error) in
