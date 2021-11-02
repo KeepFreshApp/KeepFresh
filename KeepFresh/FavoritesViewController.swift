@@ -1,39 +1,40 @@
 //
-//  GroceriesViewController.swift
+//  FavoritesViewController.swift
 //  KeepFresh
 //
-//  Created by Albert Ai on 10/27/21.
+//  Created by Albert Ai on 11/1/21.
 //
 
 import UIKit
 import Parse
 
-class GroceriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-  
-    @IBOutlet weak var groceriesTableView: UITableView!
+class FavoritesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+    @IBOutlet weak var favoritesTableView: UITableView!
     
     var items = [PFObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        groceriesTableView.delegate = self
-        groceriesTableView.dataSource = self
+        
+        favoritesTableView.delegate = self
+        favoritesTableView.dataSource = self
         
         let query = PFQuery(className: "Grocery_Item")
         query.whereKey("owner", equalTo: PFUser.current()!.username!)
+        query.whereKey("favorited", equalTo: true)
         query.order(byAscending: "expiryDate")
         query.findObjectsInBackground { (items, error) in
             if (items != nil) {
                 self.items = items!
-                self.groceriesTableView.reloadData()
+                self.favoritesTableView.reloadData()
             }
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-      
+        
         let defaults = UserDefaults.standard
         if defaults.bool(forKey: "darkModeState") == true {
             overrideUserInterfaceStyle = .dark
@@ -42,17 +43,6 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
             overrideUserInterfaceStyle = .light
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         }
-    }
-  
-    @IBAction func onLogoutButton(_ sender: Any) {
-        PFUser.logOut()
-        
-        let main = UIStoryboard(name: "Main", bundle: nil)
-        let loginViewController = main.instantiateViewController(withIdentifier: "LoginViewController")
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let delegate = windowScene.delegate as? SceneDelegate else {return}
-        
-        delegate.window?.rootViewController = loginViewController
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -64,7 +54,7 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = groceriesTableView.dequeueReusableCell(withIdentifier: "GroceryItemCell", for: indexPath) as! GroceryItemCell
+        let cell = favoritesTableView.dequeueReusableCell(withIdentifier: "GroceryItemCell", for: indexPath) as! GroceryItemCell
         let item = items[indexPath.row]
         
         cell.itemNameLabel.text = item["itemName"] as? String
@@ -96,8 +86,9 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        groceriesTableView.deselectRow(at: indexPath, animated: true)
+        favoritesTableView.deselectRow(at: indexPath, animated: true)
     }
+    
 
     /*
     // MARK: - Navigation
