@@ -14,7 +14,6 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     @IBOutlet weak var itemNameField: UITextField!
     @IBOutlet weak var categoryPicker: UIPickerView!
     @IBOutlet weak var categoryField: UITextField!
-    
     @IBOutlet weak var expirationDateField: UITextField!
     
     var categories = ["Dairy", "Vegetable", "Condiment", "Bakery", "Snack", "Fruit", "Protein", "Pantry", "Frozen", "Drink" ]
@@ -22,24 +21,25 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     override func viewDidLoad() {
         super.viewDidLoad()
         createDatePickerView()
-        
-        
-        // Do any additional setup after loading the view.
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return categories.count
     }
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return categories[row]
     }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.categoryField.text = self.categories[row]
         self.categoryPicker.isHidden = true
     }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == self.categoryField {
             self.categoryPicker.isHidden = false
@@ -54,7 +54,6 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     func createDatePickerView(){
         datePicker.preferredDatePickerStyle = .wheels
-
         
         expirationDateField.textAlignment = .center
         let toolbar = UIToolbar()
@@ -96,9 +95,13 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                 print("Saved")
             }else{
                 print("error")
-                print(error)
+                print(error!)
             }
         }
+    }
+    
+    @IBAction func backPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     /*
      
