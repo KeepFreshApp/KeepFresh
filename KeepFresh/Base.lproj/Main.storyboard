@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ixa-7q-e5m">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
@@ -217,11 +217,11 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="YDL-n7-I5D" firstAttribute="top" secondItem="9T4-rE-Oui" secondAttribute="bottom" constant="5" id="2A8-zb-D6q"/>
+                                                <constraint firstItem="Dwk-J9-dkm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MXk-OV-84x" secondAttribute="trailing" constant="50" id="4si-LB-u2b"/>
                                                 <constraint firstItem="YDL-n7-I5D" firstAttribute="leading" secondItem="9T4-rE-Oui" secondAttribute="leading" id="FzW-ms-1fG"/>
                                                 <constraint firstItem="9T4-rE-Oui" firstAttribute="top" secondItem="xJI-5f-jMQ" secondAttribute="top" constant="5" id="a37-Ap-g3p"/>
                                                 <constraint firstItem="Dwk-J9-dkm" firstAttribute="centerY" secondItem="xJI-5f-jMQ" secondAttribute="centerY" id="baC-P6-AMI"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="MXk-OV-84x" secondAttribute="bottom" constant="5" id="c55-8g-NH1"/>
-                                                <constraint firstItem="Dwk-J9-dkm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9T4-rE-Oui" secondAttribute="trailing" constant="20" id="fOA-Ib-B3e"/>
                                                 <constraint firstItem="MXk-OV-84x" firstAttribute="leading" secondItem="YDL-n7-I5D" secondAttribute="leading" id="ghY-7d-zqE"/>
                                                 <constraint firstAttribute="trailing" secondItem="Dwk-J9-dkm" secondAttribute="trailing" constant="20" id="iUr-hK-JVD"/>
                                                 <constraint firstItem="9T4-rE-Oui" firstAttribute="leading" secondItem="xJI-5f-jMQ" secondAttribute="leading" constant="20" id="o5o-Z6-8z2"/>
@@ -254,12 +254,12 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem title="Add" id="qWn-ev-lSe">
+                            <barButtonItem title="Add" image="plus" catalog="system" id="qWn-ev-lSe">
                                 <connections>
-                                    <segue destination="EmX-jT-tKc" kind="presentation" id="ed7-x2-tEg"/>
+                                    <segue destination="EmX-jT-tKc" kind="presentation" modalPresentationStyle="fullScreen" id="ed7-x2-tEg"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Logout" id="yje-zM-VtF">
+                            <barButtonItem title="Logout" image="xmark" catalog="system" id="yje-zM-VtF">
                                 <connections>
                                     <action selector="onLogoutButton:" destination="SC0-ch-Fha" id="1xL-OR-4oi"/>
                                 </connections>
@@ -274,7 +274,7 @@
             </objects>
             <point key="canvasLocation" x="2794.202898550725" y="-203.57142857142856"/>
         </scene>
-        <!--Add Item View Controller-->
+        <!--Add Grocery Item-->
         <scene sceneID="XtJ-DD-ICa">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="EmX-jT-tKc" customClass="AddItemViewController" customModule="KeepFresh" customModuleProvider="target" sceneMemberID="viewController">
@@ -282,13 +282,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Grocery Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hu5-iW-sKW">
-                                <rect key="frame" x="113" y="50" width="188" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Item Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NA0-VE-zlz">
                                 <rect key="frame" x="55" y="124" width="83" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -351,10 +344,20 @@
                                     <action selector="onAddItem:" destination="EmX-jT-tKc" eventType="touchUpInside" id="1nE-W8-npI"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BwJ-fq-fgK">
+                                <rect key="frame" x="172" y="535" width="70" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Back"/>
+                                <connections>
+                                    <action selector="backPressed:" destination="EmX-jT-tKc" eventType="touchUpInside" id="lkT-zS-SzL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nEt-va-UDP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Add Grocery Item" id="TLO-tA-6h1"/>
                     <connections>
                         <outlet property="categoryField" destination="TmD-5T-smZ" id="dQr-xR-GM8"/>
                         <outlet property="categoryPicker" destination="xb4-52-ld3" id="F5G-rV-7p0"/>
@@ -432,6 +435,7 @@
         <image name="heart.square" catalog="system" width="128" height="114"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
