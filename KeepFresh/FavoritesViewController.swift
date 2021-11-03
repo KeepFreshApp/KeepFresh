@@ -55,10 +55,12 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = favoritesTableView.dequeueReusableCell(withIdentifier: "GroceryItemCell", for: indexPath) as! GroceryItemCell
+        cell.backgroundColor = UIColor.black
         let item = items[indexPath.row]
         
         cell.itemNameLabel.text = item["itemName"] as? String
         cell.categoryLabel.text = item["category"] as? String
+        cell.itemId = item.objectId
         
         let expirationDate = items[indexPath.row]["expiryDate"] as! Date
         let dateFormatterGet = DateFormatter()
@@ -70,7 +72,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
 
         let currDate = Date()
         if (expirationDate < currDate) {
-            cell.setRed()
+            cell.backgroundColor = UIColor.red
         }
         
         cell.setFavorite(items[indexPath.row]["favorited"] as! Bool)
@@ -80,6 +82,19 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
+            let query = PFQuery(className: "Grocery_Item")
+            query.whereKey("objectId", equalTo: items[indexPath.row].objectId!)
+            
+            query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else if let objects = objects {
+                    for object in objects {
+                        object.deleteInBackground()
+                    }
+                }
+            }
+            
             items.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
         }
