@@ -84,6 +84,10 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         expirationDateField.inputView = datePicker
         
         datePicker.datePickerMode = .date
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        datePicker.date = dateFormatter.date(from: "00:00")!
     }
     
     @objc func donePressed(){

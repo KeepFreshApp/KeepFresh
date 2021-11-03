@@ -29,31 +29,37 @@ class GroceryItemCell: UITableViewCell {
     
     @IBAction func favoriteItem(_ sender: Any) {
         if (!favorited) {
-//            var query = PFQuery(className:"Grocery_Item")
-//
-//            query.getObjectInBackgroundWithId(itemId!) { (parseObject: PFObject?, error: NSError?) -> Void in
-//                if error != nil {
-//                    print(error)
-//                } else if parseObject != nil {
-//                    parseObject["favorited"] = true
-//                    parseObject.saveInBackground()
-//                }
-//            }
+            let query = PFQuery(className: "Grocery_Item")
+            query.whereKey("objectId", equalTo: itemId!)
+            
+            query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else if let objects = objects {
+                    for object in objects {
+                        object["favorited"] = true
+                        object.saveInBackground()
+                    }
+                }
+            }
 
             favorited = true
             setFavorite(favorited)
         }
         else {
-//            var query = PFQuery(className:"Grocery_Item")
-//
-//            query.getObjectInBackgroundWithId(itemId!) { (parseObject: PFObject?, error: NSError?) -> Void in
-//                if error != nil {
-//                    print(error)
-//                } else if parseObject != nil {
-//                    parseObject["favorited"] = false
-//                    parseObject.saveInBackground()
-//                }
-//            }
+            let query = PFQuery(className: "Grocery_Item")
+            query.whereKey("objectId", equalTo: itemId!)
+            
+            query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else if let objects = objects {
+                    for object in objects {
+                        object["favorited"] = false
+                        object.saveInBackground()
+                    }
+                }
+            }
 
             favorited = false
             setFavorite(favorited)
@@ -68,9 +74,5 @@ class GroceryItemCell: UITableViewCell {
         else {
             favButton.setImage(UIImage(systemName: "heart"), for: .normal)
         }
-    }
-    
-    func setRed() {
-        backgroundColor = UIColor.red
     }
 }
