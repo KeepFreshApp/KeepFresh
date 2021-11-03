@@ -17,8 +17,6 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,13 +33,21 @@ class SettingsViewController: UIViewController {
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         }
         notificationPeriodField.text = String(defaults.integer(forKey: "NotifyDays"))
-        sortByControl.selectedSegmentIndex = defaults.integer(forKey: "Sortby")
+        sortByControl.selectedSegmentIndex = defaults.integer(forKey: "sortBy")
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        defaults.set(sortByControl.selectedSegmentIndex, forKey: "Sortby")
+        defaults.set(sortByControl.selectedSegmentIndex, forKey: "sortBy")
         defaults.set(Int(notificationPeriodField.text!), forKey: "NotifyDays")
         self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    @IBAction func sortBySwitch(_ sender: Any) {
+        if (sortByControl.selectedSegmentIndex == 0) {
+            defaults.set(0, forKey: "sortBy")
+        } else {
+            defaults.set(1, forKey: "sortBy")
+        }
     }
     
     @IBAction func onDarkModeSwitch(_ sender: UISwitch) {
