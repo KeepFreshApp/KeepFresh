@@ -38,9 +38,11 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
         if defaults.bool(forKey: "darkModeState") == true {
             overrideUserInterfaceStyle = .dark
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            tabBarController?.tabBar.unselectedItemTintColor = UIColor.white
         } else {
             overrideUserInterfaceStyle = .light
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+            tabBarController?.tabBar.unselectedItemTintColor = UIColor.gray
         }
     }
   

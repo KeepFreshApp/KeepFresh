@@ -28,9 +28,11 @@ class SettingsViewController: UIViewController {
             overrideUserInterfaceStyle = .dark
             darkModeSwitch.isOn = true
             notificationPeriodField.backgroundColor = UIColor.darkGray
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         } else {
             overrideUserInterfaceStyle = .light
             notificationPeriodField.backgroundColor = UIColor.white
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         }
         notificationPeriodField.text = String(defaults.integer(forKey: "NotifyDays"))
         sortByControl.selectedSegmentIndex = defaults.integer(forKey: "Sortby")
