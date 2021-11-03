@@ -109,17 +109,13 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
         item.saveInBackground{(success, error) in
             if success{
-                self.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
                 print("Saved")
             }else{
                 print("error")
                 print(error!)
             }
         }
-    }
-    
-    @IBAction func backPressed(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
     }
     /*
      
