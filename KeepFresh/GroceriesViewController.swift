@@ -13,12 +13,16 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var groceriesTableView: UITableView!
     
     var items = [PFObject]()
+    var settings = SettingsViewController()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         groceriesTableView.delegate = self
         groceriesTableView.dataSource = self
+        print("here")
+        print(settings.darkMode)
     }
     
     override func viewWillAppear(_ animated: Bool) {
