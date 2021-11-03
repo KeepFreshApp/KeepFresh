@@ -14,6 +14,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var darkModeSwitch: UISwitch!
     
     let defaults = UserDefaults.standard
+    var darkMode : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,11 +53,13 @@ class SettingsViewController: UIViewController {
     
     @IBAction func onDarkModeSwitch(_ sender: UISwitch) {
         if sender.isOn {
+            darkMode = "true"
             defaults.set(true, forKey: "darkModeState")
             overrideUserInterfaceStyle = .dark
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
             notificationPeriodField.backgroundColor = UIColor.darkGray
         } else {
+            darkMode = "false"
             defaults.set(false, forKey: "darkModeState")
             overrideUserInterfaceStyle = .light
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]

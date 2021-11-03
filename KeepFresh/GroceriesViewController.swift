@@ -20,6 +20,8 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
 
         groceriesTableView.delegate = self
         groceriesTableView.dataSource = self
+        print("here")
+        print(settings.darkMode)
     }
     
     override func viewWillAppear(_ animated: Bool) {
