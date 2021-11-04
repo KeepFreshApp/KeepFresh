@@ -338,7 +338,7 @@
                     <navigationItem key="navigationItem" title="Groceries" id="fyu-dn-mGj">
                         <barButtonItem key="leftBarButtonItem" image="gear" catalog="system" id="FB1-uj-dpx">
                             <connections>
-                                <segue destination="Fss-VD-6RJ" kind="show" id="QXh-nN-Uwt"/>
+                                <segue destination="Fss-VD-6RJ" kind="show" identifier="SettingsSegue" id="QXh-nN-Uwt"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>

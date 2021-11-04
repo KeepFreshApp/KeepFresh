@@ -61,7 +61,14 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = favoritesTableView.dequeueReusableCell(withIdentifier: "GroceryItemCell", for: indexPath) as! GroceryItemCell
-        cell.backgroundColor = UIColor.black
+        
+        let defaults = UserDefaults.standard
+        if defaults.bool(forKey: "darkModeState") == true {
+            cell.backgroundColor = UIColor.black
+        }
+        else{
+            cell.backgroundColor = UIColor.white
+        }
         let item = items[indexPath.row]
         
         cell.itemNameLabel.text = item["itemName"] as? String
