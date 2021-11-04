@@ -13,21 +13,18 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var groceriesTableView: UITableView!
     
     var items = [PFObject]()
-    var settings = SettingsViewController()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         groceriesTableView.delegate = self
         groceriesTableView.dataSource = self
-        print("here")
-        print(settings.darkMode)
+        
+
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        let defaults = UserDefaults.standard
         let query = PFQuery(className: "Grocery_Item")
         query.whereKey("owner", equalTo: PFUser.current()!.username!)
         query.order(byAscending: "expiryDate")
@@ -38,7 +35,7 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         }
       
-        let defaults = UserDefaults.standard
+        //let defaults = UserDefaults.standard
         if defaults.bool(forKey: "darkModeState") == true {
             overrideUserInterfaceStyle = .dark
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -71,7 +68,14 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = groceriesTableView.dequeueReusableCell(withIdentifier: "GroceryItemCell", for: indexPath) as! GroceryItemCell
-        cell.backgroundColor = UIColor.black
+        
+        let defaults = UserDefaults.standard
+        if defaults.bool(forKey: "darkModeState") == true {
+            cell.backgroundColor = UIColor.black
+        }
+        else{
+            cell.backgroundColor = UIColor.white
+        }
         let item = items[indexPath.row]
         
         cell.itemNameLabel.text = item["itemName"] as? String
