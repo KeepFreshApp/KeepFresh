@@ -26,6 +26,9 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewWillAppear(animated)
         let query = PFQuery(className: "Grocery_Item")
         query.whereKey("owner", equalTo: PFUser.current()!.username!)
+        
+        let defaults = UserDefaults.standard
+
         if (defaults.integer(forKey: "sortBy") == 0) {
             query.order(byAscending: "createdAt")
         } else {
@@ -38,7 +41,6 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         }
       
-        let defaults = UserDefaults.standard
         if defaults.bool(forKey: "darkModeState") == true {
             overrideUserInterfaceStyle = .dark
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
