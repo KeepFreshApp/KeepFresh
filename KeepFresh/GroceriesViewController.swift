@@ -24,10 +24,13 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let defaults = UserDefaults.standard
         let query = PFQuery(className: "Grocery_Item")
         query.whereKey("owner", equalTo: PFUser.current()!.username!)
-        query.order(byAscending: "expiryDate")
+        if (defaults.integer(forKey: "sortBy") == 0) {
+            query.order(byAscending: "createdAt")
+        } else {
+            query.order(byAscending: "expiryDate")
+        }
         query.findObjectsInBackground { (items, error) in
             if (items != nil) {
                 self.items = items!
@@ -35,7 +38,7 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         }
       
-        //let defaults = UserDefaults.standard
+        let defaults = UserDefaults.standard
         if defaults.bool(forKey: "darkModeState") == true {
             overrideUserInterfaceStyle = .dark
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -82,7 +85,12 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.categoryLabel.text = item["category"] as? String
         cell.itemId = item.objectId
         
-        let expirationDate = items[indexPath.row]["expiryDate"] as! Date
+        var expirationDate: Date
+        if (defaults.integer(forKey: "sortBy") == 0) {
+            expirationDate = items[indexPath.row].createdAt!
+        } else {
+            expirationDate = items[indexPath.row]["expiryDate"] as! Date
+        }
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "M/d/yyyy, h:mm a"
         let dateFormatterOut = DateFormatter()

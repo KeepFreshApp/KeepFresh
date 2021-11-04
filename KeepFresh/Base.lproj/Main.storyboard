@@ -220,6 +220,9 @@
                                     <segment title="Purchase Date"/>
                                     <segment title="Expiry Date"/>
                                 </segments>
+                                <connections>
+                                    <action selector="sortBySwitch:" destination="Fss-VD-6RJ" eventType="valueChanged" id="7pe-Xv-f1T"/>
+                                </connections>
                             </segmentedControl>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jlE-LR-prj">
                                 <rect key="frame" x="322" y="273" width="49" height="31"/>
