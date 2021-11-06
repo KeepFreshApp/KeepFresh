@@ -13,6 +13,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var favoritesTableView: UITableView!
     
     var items = [PFObject]()
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,11 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         let query = PFQuery(className: "Grocery_Item")
         query.whereKey("owner", equalTo: PFUser.current()!.username!)
         query.whereKey("favorited", equalTo: true)
-        query.order(byAscending: "expiryDate")
+        if (defaults.integer(forKey: "sortBy") == 0) {
+            query.order(byAscending: "createdAt")
+        } else {
+            query.order(byAscending: "expiryDate")
+        }
         query.findObjectsInBackground { (items, error) in
             if (items != nil) {
                 self.items = items!
@@ -35,7 +40,6 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         }
         
-        let defaults = UserDefaults.standard
         if defaults.bool(forKey: "darkModeState") == true {
             overrideUserInterfaceStyle = .dark
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -57,7 +61,14 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = favoritesTableView.dequeueReusableCell(withIdentifier: "GroceryItemCell", for: indexPath) as! GroceryItemCell
-        cell.backgroundColor = UIColor.black
+        
+        let defaults = UserDefaults.standard
+        if defaults.bool(forKey: "darkModeState") == true {
+            cell.backgroundColor = UIColor.black
+        }
+        else{
+            cell.backgroundColor = UIColor.white
+        }
         let item = items[indexPath.row]
         
         cell.itemNameLabel.text = item["itemName"] as? String
@@ -65,11 +76,20 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.itemId = item.objectId
         
         let expirationDate = items[indexPath.row]["expiryDate"] as! Date
+        let creationDate = items[indexPath.row].createdAt!
+        
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "M/d/yyyy, h:mm a"
         let dateFormatterOut = DateFormatter()
         dateFormatterOut.dateFormat = "MMM d, yyyy"
-        let date: Date? = dateFormatterGet.date(from: expirationDate.formatted())
+        
+        var date: Date?
+        if defaults.integer(forKey: "sortBy") == 0 {
+            date = dateFormatterGet.date(from: creationDate.formatted())
+        }
+        else {
+            date = dateFormatterGet.date(from: expirationDate.formatted())
+        }
         cell.expirationDateLabel.text = dateFormatterOut.string(from: date!)
 
         let currDate = Date()
