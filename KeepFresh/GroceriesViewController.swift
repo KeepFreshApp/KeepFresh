@@ -87,17 +87,21 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.categoryLabel.text = item["category"] as? String
         cell.itemId = item.objectId
         
-        var expirationDate: Date
-        if (defaults.integer(forKey: "sortBy") == 0) {
-            expirationDate = items[indexPath.row].createdAt!
-        } else {
-            expirationDate = items[indexPath.row]["expiryDate"] as! Date
-        }
+        let expirationDate = items[indexPath.row]["expiryDate"] as! Date
+        let creationDate = items[indexPath.row].createdAt!
+        
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "M/d/yyyy, h:mm a"
         let dateFormatterOut = DateFormatter()
         dateFormatterOut.dateFormat = "MMM d, yyyy"
-        let date: Date? = dateFormatterGet.date(from: expirationDate.formatted())
+        
+        var date: Date?
+        if defaults.integer(forKey: "sortBy") == 0 {
+            date = dateFormatterGet.date(from: creationDate.formatted())
+        }
+        else {
+            date = dateFormatterGet.date(from: expirationDate.formatted())
+        }
         cell.expirationDateLabel.text = dateFormatterOut.string(from: date!)
 
         let currDate = Date()
