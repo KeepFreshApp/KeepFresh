@@ -59,7 +59,11 @@ A tracker-inspired app that allows people to be updated of the expiration of the
 
 **Optional Nice-to-have Stories**
 
-* Sort items by purchase date
+* [X] Sort items by purchase date
+* 
+![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/45218230/140840524-60096265-bc16-4c3a-8c72-08d873ab78bc.gif)
+
+
 * User can filter food by food type/category
 * User will be notified when foods are expiring within a couple of days
 
