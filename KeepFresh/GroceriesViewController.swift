@@ -107,6 +107,15 @@ class GroceriesViewController: UIViewController, UITableViewDelegate, UITableVie
         let currDate = Date()
         if (expirationDate < currDate) {
             cell.backgroundColor = UIColor.red
+        } else {
+            let expiryrange = defaults.integer(forKey: "NotifyDays")
+            var dateComponent = DateComponents()
+            dateComponent.day = expiryrange
+        
+            let futureDate = Calendar.current.date(byAdding: dateComponent, to: currDate)
+            if (expirationDate < futureDate!) {
+                cell.backgroundColor = UIColor.orange
+            }
         }
         
         cell.setFavorite(items[indexPath.row]["favorited"] as! Bool)
